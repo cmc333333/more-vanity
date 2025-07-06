@@ -1,0 +1,37 @@
+@font-face{
+  font-family: "Frijole";
+  src: url("./assets/fonts/Frijole/Frijole-Regular.ttf");
+}
+@font-face {
+  font-family: 'MaterialSymbolsOutlined';
+  src: url("./assets/fonts/MaterialSymbolsOutlined/MaterialSymbolsOutlined.ttf");
+}
+@font-face{
+  font-family: "NotoEmoji";
+  src: url("./assets/fonts/NotoEmoji/NotoEmoji.ttf");
+}
+@font-face{
+  font-family: "Syncopate";
+  src: url("./assets/fonts/Syncopate/Syncopate-Regular.ttf");
+}
+@font-face{
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
+}
+
+@import "tailwindcss";
+
+@theme {
+  --font-banner: "Frijole", sans-serif; 
+  --font-banner-sub: "Syncopate", sans-serif;
+  --font-emoji: "NotoEmoji", sans-serif; 
+  --font-material: "MaterialSymbolsOutlined", sans-serif;
+  --font-sans: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+}
+
+.background-icon {
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 1.5em;
+}
