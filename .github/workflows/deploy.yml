@@ -38,4 +38,4 @@ jobs:
             npm run build
 
       - name: Copy to bucket
-        run: gsutil -m rsync -r -d dist gs://demo.cmlubinski.info/
+        run: gsutil -m rsync -r -d dist gs://cmlubinski.info/
