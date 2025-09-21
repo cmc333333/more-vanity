@@ -1,3 +1,4 @@
+name: Build
 on:
   push:
     branches:
@@ -20,13 +21,21 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Login to GCP
+        uses: "google-github-actions/auth@v3"
+        with:
+          project_id: "cm-lubinski-info"
+          workload_identity_provider: "projects/156088670038/locations/global/workloadIdentityPools/github/providers/more-vanity"
+      - uses: "google-github-actions/setup-gcloud@v3"
 
-      - name: Build
+      - name: Build container and site
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/cmc333333/more-vanity-devcontainer
           runCmd: |
             npm install
+            rm -rf dist
             npm run build
 
-      - run: ls dist
+      - name: Copy to bucket
+        run: gsutil -m rsync -r -d dist gs://cm-lubinski-info-website/
